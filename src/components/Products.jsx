@@ -11,7 +11,7 @@ const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
-  let componentMounted = true;
+  const componentMounted = useRef(true);
 
   const dispatch = useDispatch();
 
@@ -30,7 +30,7 @@ const Products = () => {
       }
 
       return () => {
-        componentMounted = false;
+        componentMounted.current = false; // Use .current to update
       };
     };
 
